@@ -26,7 +26,7 @@
             <div class="panel-body">
                 <table class="table table-striped table-hover" >
                     <thead>
-                    <!--  <tr class="filters">
+                    <tr class="filters">
                          <th><input type="text" class="form-control" placeholder="Foto" disabled></th>
                          <th data-sortable="true"><input type="text" class="form-control" placeholder="Nome" disabled></th>
                          <th><input type="text" class="form-control" placeholder="Morada" disabled></th>
@@ -37,26 +37,28 @@
                          <th>Editar</th>
                          <th>Eliminar</th>
                      </tr>
-                     -->
 
+                     <!--
                     <tr>
                         <th>Foto</th>
                         <th>Nome</th>
                         <th>Morada</th>
                         <th>Idaed</th>
-                        <th>Numero de Bi</th>
+                        <th>Nº de Bi</th>
                         <th>Local de trabalho</th>
                         <th>Matricula</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
-
+                    -->
                     </thead>
                     <tbody>
                     @foreach($funcionarios as $product)
                         <tr>
                             <td>
-                                <img src="{{asset('img/').'/'.$product->foto}}" style="width:100px;height:50px">
+                                <a href="/editar_funcionario/{{$product->id}}">
+                                <img class="img-thumbnail" src="{{asset('img/').'/'.$product->foto}}" style="width:100px;height:75px">
+                            </a>
                             </td>
                             <td><a href="/editar_funcionario/{{$product->id}}">{{$product->nome}} </a></td>
                             <td>{{$product->morada}}</td>

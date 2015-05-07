@@ -15,25 +15,10 @@ class FuncionarioController extends Controller {
 
     public function api_lista_de_funcionario(){
         //query to db
-        $funcionarios =DB::table('funcionario')->get();
-
-
-
-        $response["func"] = array();
-
-        foreach($funcionarios as $funcionario){
-            $um=array();
-            $um['nome']=$funcionario->nome;
-            $um['matricula']=$funcionario->matricula;
-            $um['local_de_trabalho']=$funcionario->local_de_trabalho;
-            //$um['foto']='http://5f322cb3.ngrok.io/img/'.$funcionario->foto;
-            $um['foto']='http://10.10.10.106:9090/img/'.$funcionario->foto;
-
-            array_push($response["func"], $um);//colocar no fim do array
-
-        }
-
-        return json_encode($response);
+        $data=Input::all();
+        $funcionarios =DB::table('funcionario')->where('matricula', $data['matricula'])
+        ->first();
+        return  json_encode($funcionarios);
 
     }
 
@@ -50,21 +35,47 @@ class FuncionarioController extends Controller {
     /**
      *
      */
-
     public function editar($id){
 
-        //$vamp = DB::table('product')->get();
         $funcionario = DB::table('funcionario')->where('id', $id)
             ->first();
         return view('funcionario.editar',compact('funcionario'));
+
     }
 
     /**
      *
      */
+    public function update($id,Request $request){
 
-    public function update($id){
+        if($request->get('foto')){
+        $destinationPath = 'img'; // upload path
+        $extension = Input::file('foto')
+            ->getClientOriginalExtension(); // getting image extension
+        $fileName = rand(11111,99999).'.'.$extension; // renameing image
+        $target_path = ( $destinationPath. "/" . $fileName);
+        while (file_exists($target_path)) {
+            # code...
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+            $target_path = ( $destinationPath. "/" . $fileName);
+        }
+        Input::file('foto')->move($destinationPath, $fileName); // uploading file to given path
 
+        DB::table('funcionario')
+               ->where('id', $id)
+               ->update(array('foto' => $fileName));
+        }
+
+        DB::table('funcionario')
+                ->where('id', $id)
+                ->update(array('nome' => $request->get('nome'),
+                    'morada' => $request->get('morada'),
+                    'idade' => $request->get('idade'),
+                    'bi' => $request->get('bi'),
+                    'local_de_trabalho' => $request->get('local_de_trabalho'),
+                    'matricula' =>$request->get('matricula')));
+
+        return redirect('lista_de_funcionario');
 
     }
 

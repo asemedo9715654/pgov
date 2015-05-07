@@ -13,9 +13,15 @@ class EstatisticaController extends Controller {
 	public function mostrar_estatistica(){
 
 
-
-
-
 	}
+
+	//retorna tudo sobre entradas
+	public function index(){
+    //numero de caros por dia
+		$funcionario = DB::table('funcionario')->where('id', $id)
+            ->first();
+						
+	}
+
 
 }

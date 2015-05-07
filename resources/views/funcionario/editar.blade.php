@@ -10,7 +10,7 @@
 
             <div class="panel-body">
 
-                {!! Form::model($funcionario,array('url' => '/editar_funcionario'.$funcionario->id, 'method'=>'PATCH','files'=>true))  !!}
+                {!! Form::model($funcionario,array('url' => '/editar_funcionario/'.$funcionario->id, 'method'=>'PATCH','files'=>true))  !!}
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{$errors->has('nome')?'has-error':''}}">

@@ -27,12 +27,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-      <!-- Material bigine here -->
+      <!-- Material bigine here
 
       <link href="{{ asset('/css/material-bootstrap/material.css') }}" rel="stylesheet">
       <link href="{{ asset('/css/material-bootstrap/material-fullpalette.css') }}" rel="stylesheet">
       <link href="{{ asset('/css/material-bootstrap/ripples.css') }}" rel="stylesheet">
-      <link href="{{ asset('/css/material-bootstrap/roboto.css') }}" rel="stylesheet">
+      <link href="{{ asset('/css/material-bootstrap/roboto.css') }}" rel="stylesheet"> -->
 
 
       <!-- Material end here -->

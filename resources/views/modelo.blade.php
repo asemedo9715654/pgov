@@ -9,13 +9,12 @@
 
     <link href="{{ asset('/css/costum/navbar.css') }}" rel="stylesheet">
 
-    <!-- Material bigine here -->
+    <!-- Material bigine here
 
     <link href="{{ asset('/css/material-bootstrap/material.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material-bootstrap/material-fullpalette.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material-bootstrap/ripples.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/material-bootstrap/roboto.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('/css/material-bootstrap/roboto.css') }}" rel="stylesheet">-->
 
     <!-- Material end here -->
 
@@ -56,7 +55,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="procurar">
                     </div>
-                    <!--<button type="submit" class="btn btn-default">Procurar</button>-->
+                    <button type="submit" class="btn btn-default">Procurar</button>
 
                 </form>
                 <ul class="nav navbar-nav navbar-right">
@@ -101,9 +100,9 @@
 
 <script src="{{ asset('/js/filter.js') }}"></script>
 
-<!-- Material js-->
+<!-- Material js
 <script src="{{ asset('/js/material-bootstrap/material.js') }}"></script>
-<script src="{{ asset('/js/material-bootstrap/ripples.js') }}"></script>
+<script src="{{ asset('/js/material-bootstrap/ripples.js') }}"></script>-->
 
 
 </html>

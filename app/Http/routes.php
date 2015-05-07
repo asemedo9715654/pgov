@@ -37,11 +37,11 @@ Route::get('outro', ['middleware' => 'auth', 'uses' => 'FuncionarioController@li
 
 Route::patch('adicionar_na_base_de_dados','FuncionarioController@adicionar_na_base_de_dados');
 
-Route::get('editar_funcionario{id}', ['middleware' => 'auth', 'uses' => 'FuncionarioController@editar']);
+Route::get('editar_funcionario/{id}', 'FuncionarioController@editar');
 
-Route::patch('editar_funcionario{id}', ['middleware' => 'auth', 'uses' => 'FuncionarioController@update']);
+Route::patch('editar_funcionario/{id}',  'FuncionarioController@update');
 
-Route::get('remover_funcionario{id}', ['middleware' => 'auth', 'uses' => 'FuncionarioController@remove']);
+Route::get('remover_funcionario/{id}', ['middleware' => 'auth', 'uses' => 'FuncionarioController@remove']);
 
 //Entradas e saidas
 Route::get('lista_de_entrada_e_saida', ['middleware' => 'auth', 'uses' => 'EntradaSaidaController@entrada_e_saida']);
@@ -51,7 +51,7 @@ Route::get('lista_de_entrada_e_saida', ['middleware' => 'auth', 'uses' => 'Entra
 Route::post('api-entradas', 'EntradaSaidaController@criar_entrada');
 
 //api funcionario
-Route::get('api-lista-de-funcionario','FuncionarioController@api_lista_de_funcionario');
+Route::post('api-lista-de-funcionario','FuncionarioController@api_lista_de_funcionario');
 
 
 

@@ -18,6 +18,11 @@ class LoginController extends Controller {
      */
     public function index()
     {
+        if (Auth::check())
+        {
+            // The user is logged in...
+            return redirect('lista_de_funcionario');
+        }
         return view('login.index');
     }
 
