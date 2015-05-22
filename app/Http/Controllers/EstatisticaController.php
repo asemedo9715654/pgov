@@ -18,9 +18,18 @@ class EstatisticaController extends Controller {
 	//retorna tudo sobre entradas
 	public function index(){
     //numero de caros por dia
-		$funcionario = DB::table('funcionario')->where('id', $id)
-            ->first();
-						
+		$funcionarios = DB::table('funcionario')
+            ->get();
+
+		$num_funcionario = count($funcionarios);
+
+		$entrada = DB::table('entrada_e_saida')
+            ->get();
+
+		$num_entrada = count($funcionarios);
+
+		return ()		
+
 	}
 
 

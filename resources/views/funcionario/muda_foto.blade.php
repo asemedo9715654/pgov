@@ -25,8 +25,12 @@
           </div>
           <div class="panel-body">
               <!--   work group  -->
-
-
+            <div class="row">
+              <div class="col-lg-6">
+               <!-- para mostra fotografia -->
+               
+              </div>
+            </div>
               <!-- work group end-->
           </div>
       </div>

@@ -7,7 +7,7 @@
 
         <div class="panel panel-default filterable">
             <!-- Default panel contents -->
-            <div class="panel-heading"><h2>Lista de Funcionarios</h2>
+            <div class="panel-heading"><h2>Lista de Veiculos</h2>
                 <div class="pull-left">
 
                     <button type="button" class="btn btn-default btn-sm">
@@ -28,40 +28,27 @@
                     <thead>
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Foto" disabled></th>
-                        <th data-sortable="true"><input type="text" class="form-control" placeholder="Nome" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Morada" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Idade" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Numero de Bi" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Local de Trabalho" disabled></th>
+                        <th data-sortable="true"><input type="text" class="form-control" placeholder="Marca" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Matricula" disabled></th>
-                        <th> Autorização </th>
+                        <th><input type="text" class="form-control" placeholder="Ano de Fabrico" disabled></th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
 
                     </thead>
                     <tbody>
-                    @foreach($funcionarios as $product)
+                    @foreach($veiculos as $product)
                         <tr>
                             <td>
-                                <a href="/editar_funcionario/{{$product->id}}">
-                                    <img class="img-thumbnail" src="{{asset('img/').'/'.$product->foto}}" style="width:100px;height:75px">
+                                <a href="/editar_veiculo/{{$product->id}}">
+                                    <img class="img-thumbnail" src="{{asset('img/veiculos').'/'.$product->foto}}" style="width:100px;height:75px">
                                 </a>
                             </td>
-                            <td><a href="/editar_funcionario/{{$product->id}}">{{$product->nome}} </a></td>
-                            <td>{{$product->morada}}</td>
-                            <td>{{$product->idade}}</td>
-                            <td>{{$product->bi}}</td>
-                            <td>{{$product->local_de_trabalho}}</td>
+                            <td><a href="/editar_veiculo/{{$product->id}}">{{$product->marca}} </a></td>
                             <td>{{$product->matricula}}</td>
+                            <td>{{$product->ano_fabrico}}</td>
 
-                            @if ($product->autorizacao == 1)
-                                <td><span class="label label-info">Autorizado</span></td>
-                            @elseif($product->autorizacao == 0)
-                                <td><span class="label label-warning">Não autorizado</span></td>
-                            @endif
-
-                            <td><a href="/editar_funcionario/{{$product->id}}" title="Editar os dados do {{$product->nome}}}!">
+                            <td><a href="/editar_veiculo/{{$product->id}}" title="Editar os dados do veiculo {{$product->marca}}}!">
                                     <button type="button" class="btn btn-default btn-md">
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </button>
@@ -80,7 +67,7 @@
                     </tbody>
                 </table>
                 <!-- para mostrar algo de trocar a paginação-->
-                <?php echo $funcionarios->render(); ?>
+                <?php echo $veiculos->render(); ?>
             </div>
 
         </div>

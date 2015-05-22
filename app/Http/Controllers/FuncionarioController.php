@@ -6,19 +6,83 @@ use App\Http\Requests\FuncionarioRequest;
 
 use Illuminate\Http\Request;
 use DB;
-
 use Input;
 
 
 class FuncionarioController extends Controller {
 
-
-    public function api_lista_de_funcionario(){
+    /**
+     * api para lista de funncionaio
+     * @return string
+     */
+    public function api_lista_de_funcionario($matricula){
         //query to db
-        $data=Input::all();
-        $funcionarios =DB::table('funcionario')->where('matricula', $data['matricula'])
+
+        $funcionario =DB::table('funcionario')->where('matricula', $matricula)
         ->first();
-        return  json_encode($funcionarios);
+
+        $response["listafuncionario"] = array();
+
+        if(count($funcionario)>0){
+
+            $um=array();
+            $um['nome']=$funcionario->nome;
+            $um['morada']=$funcionario->morada;
+            $um['foto']='http://b088d393.ngrok.io/images/'.$funcionario->foto;
+            $um['idade']=$funcionario->idade;
+
+            $um['local_de_trabalho']=$funcionario->local_de_trabalho;
+            $um['autorizacao']=$funcionario->autorizacao;
+            $um['matricula']=$funcionario->matricula;
+
+            array_push($response["listafuncionario"], $um);
+            $response["status"]='true';
+            $response["message"]='Ok funcionario encontrado';
+
+        }else{
+            $response["status"]='false';
+            $response["message"]='erro funcionario nao encontrado!';
+
+        }
+
+        return  $response;
+    }
+
+    /**
+    *
+    *
+    **/
+    public function api_todos_funcinario(){
+        //query to db
+
+        $funcionarios =DB::table('funcionario')->get();
+
+        $response["listafuncionario"] = array();
+
+        if(count($funcionarios)>0){
+            foreach($funcionarios as $funcionario){
+               $um=array();
+               $um['nome']=$funcionario->nome;
+               $um['morada']=$funcionario->morada;
+               $um['foto']='http://b088d393.ngrok.io/images/'.$funcionario->foto;
+               $um['idade']=$funcionario->idade;
+
+               $um['local_de_trabalho']=$funcionario->local_de_trabalho;
+               $um['autorizacao']=$funcionario->autorizacao;
+               $um['matricula']=$funcionario->matricula;
+
+               array_push($response["listafuncionario"], $um);
+
+           }
+           $response['status'] = 'true';
+           $response['message'] = 'ok';
+
+       }else{
+           $response['status'] = 'false';
+           $response['message'] = 'error';
+       }
+
+        return $response;
 
     }
 
@@ -29,7 +93,9 @@ class FuncionarioController extends Controller {
      */
     public function adicionar()
     {
-        return view('funcionario.adicionar');
+        $veiculos = DB::table('veiculo')->get();
+
+        return view('funcionario.adicionar',compact('veiculos'));
     }
 
     /**
@@ -66,12 +132,18 @@ class FuncionarioController extends Controller {
                ->update(array('foto' => $fileName));
         }
 
+        $autoriza=0;
+        if (Input::get('autorizacao') === '1') {
+            $autoriza=1;
+        }
+
         DB::table('funcionario')
                 ->where('id', $id)
                 ->update(array('nome' => $request->get('nome'),
                     'morada' => $request->get('morada'),
                     'idade' => $request->get('idade'),
                     'bi' => $request->get('bi'),
+                    'autorizacao' => $autoriza,
                     'local_de_trabalho' => $request->get('local_de_trabalho'),
                     'matricula' =>$request->get('matricula')));
 
@@ -129,12 +201,17 @@ class FuncionarioController extends Controller {
         }
         Input::file('foto')->move($destinationPath, $fileName); // uploading file to given path
 
+        $autoriza=0;
+        if (Input::get('autorizacao') === '1') {
+            $autoriza=1;
+        }
 
         DB::table('funcionario')->insert(['nome' => $request->get('nome'),
             'foto' => $fileName,
             'morada' => $request->get('morada'),
             'idade' => $request->get('idade'),
             'bi' => $request->get('bi'),
+            'autorizacao' => $autoriza,
             'local_de_trabalho' => $request->get('local_de_trabalho'),
             'matricula' =>$request->get('matricula')]);
 

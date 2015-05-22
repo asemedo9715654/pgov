@@ -28,7 +28,7 @@
 
                             <div class="list-group-item">
                                 <div class="row-picture">
-                                    <img class="circle" src="{{asset('img/').'/'.$product->foto}}" alt="icon">
+                                    <img class="circle" src="{{asset('img/').'/'.$product->foto}}" alt="icon" style="width:300px;height:190px">
                                 </div>
                                 <div class="row-content">
                                     <div class="least-content">Idade: {{$product->idade}}</div>

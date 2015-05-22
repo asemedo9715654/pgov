@@ -38,15 +38,34 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-                    <li><a href="/adicionar">Adicionar</a></li>
+                    <!--<li><a href="/adicionar">Adicionar</a></li>-->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gerrir <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Funcionario <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li><a href="/lista_de_funcionario">Lista de funcinarios</a></li>
+                            <li><a href="/adicionar">Adicionar funcionarios</a></li>
+
+
+                        </ul>
+                    </li>
+                    <!--New abordagem -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Entradas <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/lista_de_entrada_e_saida">Ver entradas e saidas</a></li>
                             <li><a href="#">Ver Relatorios</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Lista de funcinarios</a></li>
-                            <li><a href="#">Adicionar funcionarios</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Veiculos <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            
+                            <li><a href="/adicionar_veiculo">Adicionar veiculos</a></li>
+                            <li><a href="/lista_de_veiculos">Ver veiculos</a></li>
+
                         </ul>
                     </li>
 

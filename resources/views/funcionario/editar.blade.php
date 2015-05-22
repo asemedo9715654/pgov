@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
+        <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
                 <h2>Editar funcionario</h2>
@@ -65,6 +65,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{$errors->has('autorizacao')?'has-error':''}}">
+                            {!! Form::label('autorizacao','Autorização de entrada :')!!}
+                            {!! Form::checkbox('autorizacao',1,null,['class'=>'checkbox'])!!}
+                            {!! $errors->first('autorizacao','<span class="help-block">:message</span>')!!}
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="form-group">
                     {!! Form::reset('Limpar', ['class' => 'btn btn-primary']) !!}
                     <input type="submit" class="btn btn-primary"  value="Guardar">

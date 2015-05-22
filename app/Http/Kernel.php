@@ -8,6 +8,7 @@ class Kernel extends HttpKernel {
 	 * The application's global HTTP middleware stack.
 	 *
 	 * @var array
+	 *
 	 */
 	protected $middleware = [
 		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',

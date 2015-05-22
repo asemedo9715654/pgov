@@ -21,6 +21,7 @@ class CreateFuncionarioTable extends Migration {
             $table->integer('idade');
             $table->integer('bi');
             $table->string('local_de_trabalho');
+            $table->integer('autorizacao');
             $table->string('matricula');
             $table->timestamps();
         });
