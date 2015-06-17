@@ -29,7 +29,7 @@ class FuncionarioRequest extends Request {
             'morada'=>'required|Min:4|Max:90',
             'bi'=>'required|Integer',
             'local_de_trabalho'=>'required|Min:10|Max:200',
-            'matricula'=>'required|Min:6|Max:20'
+            'matricula'=>'required|Min:4|Max:20'
 		];
 	}
 
